@@ -1,7 +1,7 @@
 #Libraries
 import RPi.GPIO as GPIO
 import time
-import Ultrasonic
+from Ultrasonic import Ultrasonic
 import numpy as np
 from PIL import Image
 
