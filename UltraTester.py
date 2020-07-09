@@ -76,4 +76,3 @@ try:
 except KeyboardInterrupt:
     print("Measurement stopped by User")
     GPIO.cleanup()
-

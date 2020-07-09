@@ -1,10 +1,27 @@
+#Libraries
+import RPi.GPIO as GPIO
+import time
+import Ultrasonic
+import numpy as np
+from PIL import Image
 
-# PIL accesses images in Cartesian co-ordinates, so it is Image[columns, rows]
-img = Image.new( 'RGB', (250,250), "black") # create a new black image
-pixels = img.load() # create the pixel map
+sensor = Ultrasonic(18, 12)
+try:
+    i = 0
+    array = np.zeros([100,25], dtype=np.uint8)
+    while True:
+        dist = sensor.dis(50)
+        if dist == 0:
+           print("nothing found")
+        else:
+           if array[dist,0] <245:
+               array[dist,:] +=10
+           print ("Measured Distance = %.1f cm" % dist)
+        time.sleep(1)
 
-for i in range(img.size[0]):    # for every col:
-    for j in range(img.size[1]):    # For every row
-        pixels[i,j] = (i, j, 100) # set the colour accordingly
-
-img.show()
+# Reset by pressing CTRL + C
+except KeyboardInterrupt:
+    print("Measurement stopped by User")
+    GPIO.cleanup()
+    img = Image.fromarray(array)
+    img.save('UltrasensorTest.png')
