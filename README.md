@@ -17,7 +17,7 @@ $ pip install RPi.GPIO
 $ sudo pip install setuptools --upgrade  
 
 # How to run the program
-$ python RobotWithXbox.py 
+$ python programName.py
 
 # Operating System Version
 The program and installation instructions have been tested on "Raspbian GNU/Linux 10 (buster)"  
