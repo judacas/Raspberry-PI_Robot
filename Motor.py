@@ -1,9 +1,11 @@
+import RPi.GPIO as GPIO
 class Motor(object) :
-    def __init__(self, in1, in2, pwm, MP):
+    def __init__(self, in1, in2, pwm, MP, sign):
         self.in1 = in1
         self.in2 = in2
         self.pwm = pwm
         self.MP = MP
+        self.sign = sign
         
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(in1,GPIO.OUT)
@@ -17,8 +19,8 @@ class Motor(object) :
         
     # Takes in a value between -1 and 1 inclusive. Where 1 is forward full speed and -1 is backwards full speed
     def setPower(self, power):
-        
-        if abs(power) < minimumSensitivity:
+        power *= self.sign
+        if abs(power) < self.MP:
             GPIO.output(self.in1,GPIO.LOW)
             GPIO.output(self.in2,GPIO.LOW)
             self.p.ChangeDutyCycle(0)

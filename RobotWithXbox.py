@@ -48,10 +48,10 @@ class Motor(object) :
         
                
                
-minimumSensitivity = 0.1
+minimumSensitivity = 0
 
-leftMotor = Motor(24,23,25, 40)
-rightMotor = Motor(27,22,17, 40)
+leftMotor = Motor(24,23,25, 0)
+rightMotor = Motor(27,22,17, 0)
 
 gamepad = InputDevice('/dev/input/event2')
 
