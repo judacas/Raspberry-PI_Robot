@@ -20,7 +20,7 @@ class Motor(object) :
     # Takes in a value between -1 and 1 inclusive. Where 1 is forward full speed and -1 is backwards full speed
     def setPower(self, power):
         power *= self.sign
-        if abs(power) < self.MP:
+        if power == 0:
             GPIO.output(self.in1,GPIO.LOW)
             GPIO.output(self.in2,GPIO.LOW)
             self.p.ChangeDutyCycle(0)
@@ -28,8 +28,10 @@ class Motor(object) :
         elif power > 0:
             GPIO.output(self.in1,GPIO.HIGH)
             GPIO.output(self.in2,GPIO.LOW)
-            self.p.ChangeDutyCycle(max(0,min(abs(power*(100-self.MP)+self.MP),100)))
+            self.p.ChangeDutyCycle(mapValue(power))
         else:
             GPIO.output(self.in1,GPIO.LOW)
             GPIO.output(self.in2,GPIO.HIGH)
-            self.p.ChangeDutyCycle(max(0,min(abs(power*(100-self.MP)-self.MP),100)))
+            self.p.ChangeDutyCycle(mapValue(power))
+    def mapValue(self, power):
+        return max(0, min(100, abs(power*(100-self.MP)+self.MP)))
