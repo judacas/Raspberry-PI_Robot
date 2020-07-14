@@ -6,8 +6,8 @@ import time
 GPIO.setmode(GPIO.BCM)
  
 #set GPIO Pins
-GPIO_TRIGGER = 18
-GPIO_ECHO = 12
+GPIO_TRIGGER = 20
+GPIO_ECHO = 21
 accuracy = 10
 #set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
@@ -42,7 +42,7 @@ def distance():
     TimeElapsed = StopTime - StartTime
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
-    distance = round(TimeElapsed * 17150)
+    distance = (TimeElapsed * 17150)
  
     return distance
 

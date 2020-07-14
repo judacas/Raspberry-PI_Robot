@@ -35,7 +35,7 @@ class Ultrasonic(object):
         TimeElapsed = StopTime - StartTime
         # multiply with the sonic speed (34300 cm/s)
         # and divide by 2, because there and back
-        distance = round(TimeElapsed * 17150)
+        distance = (TimeElapsed * 17150)
  
         return distance
 
@@ -52,5 +52,5 @@ class Ultrasonic(object):
             else:
                 x+=1
         distances.sort()
-        print(distances)
+#         print(distances)
         return distances[round(accuracy/2)]
