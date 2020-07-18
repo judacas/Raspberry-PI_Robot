@@ -28,10 +28,10 @@ class Motor(object) :
         elif power > 0:
             GPIO.output(self.in1,GPIO.HIGH)
             GPIO.output(self.in2,GPIO.LOW)
-            self.p.ChangeDutyCycle(mapValue(power))
+            self.p.ChangeDutyCycle(self.mapValue(power))
         else:
             GPIO.output(self.in1,GPIO.LOW)
             GPIO.output(self.in2,GPIO.HIGH)
-            self.p.ChangeDutyCycle(mapValue(power))
+            self.p.ChangeDutyCycle(self.mapValue(power))
     def mapValue(self, power):
-        return max(0, min(100, abs(power*(100-self.MP)+self.MP)))
+        return max(0, min(100, abs(power*(100-self.MP))+self.MP))

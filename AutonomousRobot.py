@@ -7,7 +7,7 @@ from Ultrasonic import Ultrasonic
 
 from Motor import Motor 
 
-mp = 0.3 #minimum Power
+mp = 25 #minimum Power
 
 # set up motors
 leftMotor = Motor(24,23,25, mp,-1)
@@ -23,6 +23,6 @@ overall = 0
 while(True):
     dist = frontSensor.dis(15)
     overall = (dist-50)/50
-    print("%5.1f %5.1f" % (dist, overall))
+    print("%5.3f %5.3f %5.3f" % (dist, overall, leftMotor.mapValue(overall)))
     leftMotor.setPower(overall)
     rightMotor.setPower(overall)
