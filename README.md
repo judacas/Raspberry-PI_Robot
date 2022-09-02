@@ -25,7 +25,7 @@ Check the Operating System version
 $ cat /etc/os-release  
 
 
-#How it was going to work
+# How it was going to work
 so if you look at the stl models you can see that I had two ultrasonic sensors on each side perpendicular from each other.
 The reason for that is because I not only wanted to follow the wall but to know the actual distance to the wall no matter the orientation of the robot
 The end goal was to be able to actually map the edges of a room, hence why we need to not only follow the edge but know the exact ditance
